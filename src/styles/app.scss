@@ -27,14 +27,14 @@ a {
   color: rgb(0, 195, 0);
 }
 
-.adminContainer {
+.admin-container {
   @include grid(1fr 4fr, 2rem);
   height: 100vh;
-  background-color: rgb(255, 246, 246);
+  background-color: rgb(15, 12, 12);
 
   > aside {
     width: 100%;
-    background-color: rgb(216, 216, 216);
+    background-color: rgb(30, 7, 7);
     padding: 1rem;
     z-index: 10;
     overflow-y: auto;
