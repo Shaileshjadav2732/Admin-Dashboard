@@ -2,25 +2,25 @@ import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
-  PointElement,
-  LineElement,
+  BarElement,
   Title,
   Tooltip,
   Legend,
   ChartData,
+  ChartOptions,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
-
 ChartJS.register(
   CategoryScale,
   LinearScale,
-  PointElement,
-  LineElement,
+  BarElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+
 );
-const months = ["january", "february", "march", "april", "may", "june", "july"];
+
+const months = ["January", "February", "March", "April", "May", "June", "July"];
 
 interface BarChartProps {
   horizontal?: boolean;
@@ -34,38 +34,25 @@ interface BarChartProps {
 }
 
 export const BarChart = ({
-  horizontal = false,
   data_1 = [],
   data_2 = [],
   title_1,
   title_2,
   bgColor_1,
   bgColor_2,
+  horizontal = false,
   labels = months,
 }: BarChartProps) => {
-  const options = {
+  const options: ChartOptions<"bar"> = {
     responsive: true,
+    indexAxis: horizontal ? "y" : "x",
     plugins: {
       legend: {
-        position: "top",
-      },
-      title: {
         display: true,
-        text: "Chart.js Bar Chart",
       },
+    
     },
   };
-
-  /**
-   * ChartData is a predefined type from 'chart.js' that represents the data that will be passed to the chart.
-   * It is a generic type that takes three type parameters:
-   * - The first type parameter is the type of the chart (in this case, 'bar').
-   * - The second type parameter is the type of the data points (in this case, number[]).
-   * - The third type parameter is the type of the labels (in this case, string).
-   *
-   * We use ChartData here to ensure that the data object we create conforms to the expected shape of the data that will be passed to the chart.
-   * If we didn't use ChartData, the type of the data object would be inferred as { labels: string[]; datasets: [{ label: string; data: number[]; backgroundColor: string; }] } which is not as specific as ChartData<"bar", number[], string>
-   */
 
   const data: ChartData<"bar", number[], string> = {
     labels,
@@ -74,13 +61,22 @@ export const BarChart = ({
         label: title_1,
         data: data_1,
         backgroundColor: bgColor_1,
+        barThickness: "flex",
+        barPercentage: 1,
+        categoryPercentage: 0.5,
+
       },
       {
         label: title_2,
         data: data_2,
         backgroundColor: bgColor_2,
+        barThickness: "flex",
+        barPercentage: 1,
+        categoryPercentage: 0.5,
       },
     ],
   };
-  return <Bar data={data} options={options} />;
+
+  return <Bar width={horizontal ? "200%" : ""} options={options} data={data} />;
 };
+

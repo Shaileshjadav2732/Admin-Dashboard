@@ -4,7 +4,7 @@ import { FaRegBell } from "react-icons/fa";
 import userImage from "../assets/userpic.png";
 import { HiTrendingUp, HiTrendingDown } from "react-icons/hi";
 import data from "../assets/data.json";
-
+import { BarChart } from "../components/Charts";
 const AdminSidebar = lazy(() => import("../components/AdminSidebar"));
 
 const Dashboard = () => {
@@ -48,10 +48,18 @@ const Dashboard = () => {
         <section className="graph-container">
           <div className="revenue-chart">
             <h2>Revenue & Transaction</h2>
+            <BarChart
+              data_1={[300, 144, 433, 655, 237, 755, 190]}
+              data_2={[ 200,444,343,556,778,455,990]}
+              title_1="Revenue"
+              title_2="Transaction"
+              bgColor_1="rgb(0,155,255)"
+              bgColor_2="rgb(132,155,255,0.8)"
+            />
           </div>
           <div className="dashboard-categories">
             <h2>Inventory</h2>
-            <div> 
+            <div>
               {data.categories.map((category) => (
                 <CategoryItem
                   key={category.value}
@@ -129,3 +137,4 @@ const CategoryItem = ({ color, value, heading }: CategoryItemProps) => (
   </div>
 );
 export default Dashboard;
+
