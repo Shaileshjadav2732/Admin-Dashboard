@@ -19,11 +19,8 @@
       {
          "value": 5,
          "heading":"Watches"
-      },
-      {
-         "value": 5,
-         "heading":"Smartwatches"
       }
+     
    ],
 
    "transactions": [{

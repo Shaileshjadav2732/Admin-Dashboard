@@ -30,11 +30,11 @@ a {
 .admin-container {
   @include grid(1fr 4fr, 2rem);
   height: 100vh;
-  background-color: rgb(15, 12, 12);
+  background-color: #f2f2f2;
 
   > aside {
     width: 100%;
-    background-color: rgb(30, 7, 7);
+    background-color: #d1e1e2;
     padding: 1rem;
     z-index: 10;
     overflow-y: auto;
@@ -62,4 +62,5 @@ a {
       }
     }
   }
+ 
 }
