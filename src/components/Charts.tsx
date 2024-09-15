@@ -109,7 +109,7 @@ export const DoughnutChart = ({
 
   const doughnutOptions: ChartOptions<"doughnut"> = {
     responsive: true,
-    cutout:50,
+    cutout:70,
     plugins: {
       legend: {
         display: legends,

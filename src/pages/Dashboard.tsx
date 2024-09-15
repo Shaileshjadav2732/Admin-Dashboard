@@ -6,6 +6,8 @@ import { HiTrendingUp, HiTrendingDown } from "react-icons/hi";
 import data from "../assets/data.json";
 import { BarChart, DoughnutChart } from "../components/Charts";
 import { BiMaleFemale } from "react-icons/bi";
+import Table from "../components/DashboardTable"
+
 const AdminSidebar = lazy(() => import("../components/AdminSidebar"));
 
 const Dashboard = () => {
@@ -85,11 +87,11 @@ const Dashboard = () => {
                 <BiMaleFemale />
               </p>
             </div>
-            {/* {table} */}
+           <Table data={data.transactions}/>
           </div>
         </section>
       </main>
-    </div>
+    </div>  
   );
 };
 
