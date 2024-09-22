@@ -71,27 +71,6 @@
       "quantity": 1,
       "discount": 0,
       "status": "pending"
-    },
-    {
-      "id": "8",
-      "amount": 7000,
-      "quantity": 1,
-      "discount": 250,
-      "status": "processing"
-    },
-    {
-      "id": "9",
-      "amount": 8000,
-      "quantity": 1,
-      "discount": 100,
-      "status": "pending"
-    },
-    {
-      "id": "10",
-      "amount": 9000,
-      "quantity": 1,
-      "discount": 0,
-      "status": "processing"
     }
   ]
 }
