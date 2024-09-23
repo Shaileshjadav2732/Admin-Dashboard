@@ -1,4 +1,5 @@
-import { useTable, Column, TableOptions } from "react-table";
+import { useTable, Column, TableOptions,useSortBy } from "react-table";
+import { FaSortDown, FaSortUp } from "react-icons/fa";
 function TableHOC<T extends Object>(
   columns: Column<T>[],
   data: T[],
@@ -10,8 +11,7 @@ function TableHOC<T extends Object>(
       columns,
       data,
     };
-    // const table = useTable(options);
-    const { getTableBodyProps, getTableProps, headerGroups, rows, prepareRow } = useTable(options);
+    const { getTableBodyProps, getTableProps, headerGroups, rows, prepareRow } = useTable(options,useSortBy);
 
     return (
       <div className={containerClassname}>
@@ -21,23 +21,33 @@ function TableHOC<T extends Object>(
           <thead>
             {headerGroups.map((headerGroup) => (
               <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map((column) => (
-                  <th {...column.getHeaderProps()}>
+                {headerGroup.headers.map((column: any) => (
+                  <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                     {column.render("Header")}
+
+                    {column.isSorted ? (
+                      column.isSortedDesc ? (
+                        <FaSortDown />
+                      ) : (
+                        <FaSortUp />
+                      )
+                    ): null}
                   </th>
                 ))}
+
               </tr>
             ))}
           </thead>
           <tbody {...getTableBodyProps()}>
             {rows.map((row) => {
               prepareRow(row);
-            return <tr {...row.getRowProps()}> 
-
-              {row.cells.map((cell) => (
-                  <td{...cell.getCellProps()}> {cell.render("Cell")}</td>
-            ))}
+              return (
+                <tr {...row.getRowProps()}>
+                  {row.cells.map((cell) => (
+                    <td {...cell.getCellProps()}> {cell.render("Cell")}</td>
+                  ))}
                 </tr>
+              );
             })}
           </tbody>
         </table>
@@ -47,16 +57,4 @@ function TableHOC<T extends Object>(
 }
 
 export default TableHOC;
-
-/**
- * A Higher-Order-Component that takes columns, data, containerClassname and heading
- * and returns a new component that renders a table.
- * The useTable hook is called with the columns and data and the result is stored in the table variable.
- 
- */
-
-
-
-
-
 
