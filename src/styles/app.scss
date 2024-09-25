@@ -126,3 +126,21 @@ a {
     border-right: none;
   }
 }
+
+.tab-pagination {
+  @include flex(row, center, center, 0.5rem);
+  padding: 2rem;
+  > button {
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+    cursor: pointer;
+    color: rgba(44, 104, 255);
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}
