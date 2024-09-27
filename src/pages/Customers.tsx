@@ -3,13 +3,12 @@ import { ReactElement } from "react";
 import { Column } from "react-table";
 import TableHOC from "../components/TableHOC";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { useCallback } from "react";
 import {FaTrash} from "react-icons/fa";
 interface DataType {
   avatar: ReactElement;
   name: string;
-  email: number;
+  email: string
   gender: "Male" | "Female";
   role: string;
   action: ReactElement;
@@ -35,7 +34,7 @@ const [data] = useState<DataType[]>([
       />
     ),
     name: "Alia Bhatt",
-    email: 1234567890,
+    email: "aliabhatt@gmail.com",
     gender: "Female",
     role: "admin",
     action: (
@@ -52,7 +51,7 @@ const [data] = useState<DataType[]>([
       />
     ),
     name: "Shivam",
-    email: 1234567890,
+    email: "shivam@gmail.com",
     gender: "Male",
     role: "user",
     action: (
@@ -69,7 +68,7 @@ const [data] = useState<DataType[]>([
       />
     ),
     name: "gaurav",
-    email: 1234567890,
+    email: "gaurav@gmail.com",
     gender: "Male",
     role: "user",
     action: (
@@ -83,7 +82,7 @@ const [data] = useState<DataType[]>([
       <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/201812/talpade.jpeg?size=690:388" />
     ),
     name: "lakhan",
-    email: 1234567890,
+    email: "lakhan@gmail.com",  
     gender: "Male",
     role: "user",
     action: (

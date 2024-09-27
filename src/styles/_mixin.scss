@@ -18,7 +18,7 @@
   gap: $gap;
 
 }
-@mixin inputStyle($w: 100%, $p: 1rem ,$bgColor:inherit,$border:none) {
+@mixin inputStyle($w:100%, $p: 1rem ,$bgColor:inherit,$border:none) {
  padding: $p;
  border: $border;
  background-color: $bgColor;
@@ -26,6 +26,7 @@
  outline: none;
 
 }
+
 @mixin posCenter{
 position: absolute;
 top: 50%;

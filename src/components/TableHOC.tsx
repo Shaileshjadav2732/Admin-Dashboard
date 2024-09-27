@@ -27,11 +27,11 @@ function TableHOC<T extends Object>(
       getTableBodyProps, // table body props from react-table
       getTableProps, // table props from react-table
       headerGroups, // columns
-      page, // rows of data
-      prepareRow, // prepare the row
-      nextPage, // move to next page
+      page, //rows of data
+      prepareRow, //prepare the row
+      nextPage, //move to next page
       canNextPage, // check if there is another page
-      previousPage, // move to previous page
+      previousPage, //move to previous page
       canPreviousPage, // check if there is a previous page
       pageCount, // total number of pages
       state: { pageIndex },  // this will be used to set the active page if use without the state it not count the page number
