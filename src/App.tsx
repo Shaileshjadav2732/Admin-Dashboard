@@ -9,6 +9,7 @@ const Products = lazy(() => import("./pages/Products"));
 const Customers = lazy(() => import("./pages/Customers"));
 const NewProduct = lazy(() => import("./pages/management/NewProduct"));
 const BarCharts = lazy(() => import("./pages/charts/BarCharts"));
+const PieChart = lazy(() => import("./pages/charts/PieCharts"));
 const ProductManagement = lazy(
   () => import("./pages/management/ProductManagement")
 );
