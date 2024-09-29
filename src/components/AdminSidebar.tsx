@@ -5,7 +5,7 @@ import { AiFillFileText } from "react-icons/ai";
 import { IoIosPeople } from "react-icons/io";
 import {FaChartBar ,FaChartPie,FaChartLine ,FaStopwatch,FaGamepad} from "react-icons/fa"
 const AdminSidebar = () => {
-  const location = useLocation();
+  const location = useLocation(); //useLocation()is use for get the url location from the browser and store it in location variable 
   return (
     <aside>
       <h2>Logo</h2>

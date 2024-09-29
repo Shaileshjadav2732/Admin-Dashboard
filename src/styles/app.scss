@@ -1,7 +1,7 @@
 @import "mixin";
 @import "dashboard";
 @import "product";
-
+@import "charts";
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -144,7 +144,3 @@ a {
     }
   }
 }
-// 
-// th, td {
-//   border-right: 1px solid #ccc; /* Right border for both th and td */
-// }

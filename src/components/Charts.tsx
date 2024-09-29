@@ -9,8 +9,11 @@ import {
   ChartData,
   ChartOptions,
   ArcElement,
+  
 } from "chart.js";
-import { Bar, Doughnut } from "react-chartjs-2";
+import { Bar, Doughnut, Pie } from "react-chartjs-2";
+
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -26,6 +29,8 @@ const months = ["January", "February", "March", "April", "May", "June", "July"];
 interface BarChartProps {
   horizontal?: boolean;
   data_1: number[];
+
+
   data_2: number[];
   title_1: string;
   title_2: string;
@@ -123,4 +128,43 @@ export const DoughnutChart = ({
   return <Doughnut data={doughnutData} options={doughnutOptions} />;
 }
 
+interface PieChartProps{
+  labels: string[];
+  data: number[];
+  backgroundColor: string[];
+  cutout?: number | String;
+  legends?: boolean;
+  offset?: number[];
+}
+export const PieChart = ({
+  labels,
+  data,
+  backgroundColor,
+
+  offset,
+}: PieChartProps) => {
+  const pieChartData: ChartData<"pie", number[], string> = {
+    labels,
+    datasets: [
+      {
+        data,
+        backgroundColor,
+        borderWidth: 1,
+        offset,
+        weight: 1,
+      },
+    ],
+  };
+
+  const pieChartOptions: ChartOptions<"pie"> = {
+    responsive: true,
+    cutout: 70,
+    plugins: {
+      legend: {
+      display:false,
+      },
+    },
+  };
+  return <Pie data={pieChartData} options={pieChartOptions} />;
+};
 
