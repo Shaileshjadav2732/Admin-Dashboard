@@ -125,4 +125,43 @@
       }
     }
   }
+  .shipping-info-card{
+    // >h1{
+    //   text-align: center;
+    //   @include heading(2px);
+    // }
+    >h5{
+      // margin: 2rem 0 0 0.5rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    // >p{
+    //   margin: 0.5rem;
+    // }
+    >button{
+      padding: 1rem;
+      border: none;
+      background-color: rgb(5,107,224);
+      color: white;
+      width: 100%;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      &:hover{
+        opacity: 0.8;
+      } 
+    }
+  }
+}
+
+.transaction-product-card{
+  @include flex(row ,unset,center,1rem );
+  >img{
+    @include square(4rem);
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  >span{
+    margin-left: auto;
+  }
 }

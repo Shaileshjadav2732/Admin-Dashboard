@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import AdminSidebar from "../../components/AdminSidebar";
 import { OrderItemIype, OrderType } from "../../styles/types";
 import { Link } from "react-router-dom";
@@ -33,10 +33,28 @@ const TransactionManagement = () => {
     total: 100,
     orderItems: orderItems,
     _id: "bivhufujvu",
+    shippingcharges: 0,
   });
 
-  const { name, email, address, status, subtotal, discount, tax, total, _id } =
-    order;
+  const {
+    name,
+    email,
+    address,
+    status,
+    subtotal,
+    discount,
+    tax,
+    total,
+    _id,
+    shippingcharges,
+  } = order;
+
+const updateHandler=()=>{
+  setOrder({
+    ...order,
+    status:status==="processing"?"shipped":"delivered",
+  });
+}
 
   return (
     <div className="admin-container">
@@ -48,12 +66,46 @@ const TransactionManagement = () => {
             <OrderItemCard key={index} {...item} _id={_id} />
           ))}
         </section>
+
+        <article className="shipping-info-card">
+          <h1>Order Info</h1>
+          <h5>User Info</h5>
+          <p>Name: {name}</p>
+          <p>Email: {email}</p>
+          <p>
+            Address: {`${address.street}, ${address.city}, ${address.state}`}
+          </p>
+          <h5>Amount Info</h5>
+          <p>subTotal : {subtotal}</p>
+          <p>Shipping charges : {shippingcharges}</p>
+          <p>Discount : {discount}</p>
+          <p>Tax: {tax}</p>
+          <p>Total :{total} </p>
+          <h5>Status Info</h5>
+          <p>
+            Status :
+            <span
+              className={
+                status === "delivered"
+                  ? "purple"
+                  : status === "shipped"
+                  ? "green"
+                  : "red"
+              }
+            >
+              {" "}
+              {status}
+            </span>
+          </p>
+
+          <button onClick={updateHandler}>Process Status</button>
+        </article>
       </main>
     </div>
   );
 };
 
-// Define OrderItemCard component and pass _id as prop
+
 const OrderItemCard = ({
   name,
   photo,
@@ -64,9 +116,12 @@ const OrderItemCard = ({
   return (
     <div className="transaction-product-card">
       <img src={photo} alt={name} />
+
       <Link to={`/product/${_id}`}>{name}</Link>
-      <p>Quantity: {quantity}</p>
-      <p>Price: {price}</p>
+      <span>
+        {" "}
+        ${price} X {quantity} = ${price * quantity}
+      </span>
     </div>
   );
 };

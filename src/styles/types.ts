@@ -22,5 +22,6 @@ export type OrderType = {
   tax: number;
   total: number;
   orderItems: OrderItemIype[];
+  shippingcharges: number;
   _id: string;
 };
