@@ -9,10 +9,11 @@ import {
   ChartData,
   ChartOptions,
   ArcElement,
-  
+  PointElement,
+  LineElement,
+  Filler
 } from "chart.js";
-import { Bar, Doughnut, Pie } from "react-chartjs-2";
-
+import { Bar, Doughnut, Line, Pie } from "react-chartjs-2";
 
 ChartJS.register(
   CategoryScale,
@@ -21,7 +22,10 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
-  ArcElement
+  ArcElement,
+  PointElement,
+  LineElement,
+  Filler
 );
 
 const months = ["January", "February", "March", "April", "May", "June", "July"];
@@ -29,7 +33,6 @@ const months = ["January", "February", "March", "April", "May", "June", "July"];
 interface BarChartProps {
   horizontal?: boolean;
   data_1: number[];
-
 
   data_2: number[];
   title_1: string;
@@ -98,37 +101,37 @@ export const DoughnutChart = ({
   backgroundColor,
   legends = true,
   offset,
-}: DoughnutChartProps) =>{
-
+}: DoughnutChartProps) => {
   const doughnutData: ChartData<"doughnut", number[], string> = {
     labels,
-    datasets:[{
-      data,
-      backgroundColor,
-      borderWidth: 0,
-      offset,
-      weight: 1,
-     
-    }]
+    datasets: [
+      {
+        data,
+        backgroundColor,
+        borderWidth: 0,
+        offset,
+        weight: 1,
+      },
+    ],
   };
 
   const doughnutOptions: ChartOptions<"doughnut"> = {
     responsive: true,
-    cutout:70,
+    cutout: 70,
     plugins: {
       legend: {
         display: legends,
         position: "bottom",
-        labels:{
-          padding:40, 
+        labels: {
+          padding: 40,
         },
       },
     },
   };
   return <Doughnut data={doughnutData} options={doughnutOptions} />;
-}
+};
 
-interface PieChartProps{
+interface PieChartProps {
   labels: string[];
   data: number[];
   backgroundColor: string[];
@@ -158,13 +161,54 @@ export const PieChart = ({
 
   const pieChartOptions: ChartOptions<"pie"> = {
     responsive: true,
-    cutout:0,
+    cutout: 0,
     plugins: {
       legend: {
-      display:false,
+        display: false,
       },
     },
   };
   return <Pie data={pieChartData} options={pieChartOptions} />;
 };
 
+interface LineChartProps {
+  horizontal?: boolean;
+  data: number[];
+  label: string;
+  backgroundColor: string;
+  borderColor: string;
+  labels?: string[];
+}
+
+export const LineChart = ({
+  data,
+  label,
+  backgroundColor,
+  borderColor,
+  labels = months,
+}: LineChartProps) => {
+  const options: ChartOptions<"line"> = {
+    responsive: true,
+
+    plugins: {
+      legend: {
+        display: true,
+      },
+    },
+  };
+
+  const lineChartData: ChartData<"line", number[], string> = {
+    labels,
+    datasets: [
+      {
+        fill: true,
+        label,
+        data,
+        backgroundColor,
+        borderColor,
+      },
+    ],
+  };
+
+  return <Line options={options} data={lineChartData} />;
+};
