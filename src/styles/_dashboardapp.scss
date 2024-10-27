@@ -31,5 +31,31 @@
           } 
       }
     }
+    .tosscoin{
+      margin:2rem;
+      @include square(15rem);
+      position: relative;
+      cursor: pointer;
+      transform-style: preserve-3d;
+      transition: all 0.5s;
+      >div{
+        border-radius: 50%;
+        @include square(100%);
+        position: absolute;
+        display: grid;
+        place-items: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        backface-visibility: hidden;
+
+        &:first-of-type {
+          background-image: url(../assets/heads.png); 
+        }filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.521));    
+        &:last-of-type {
+          background-image: url(../assets/tails.png); 
+          transform: rotateY(-180deg);
+        }
+      }
+    }
   }
 }
