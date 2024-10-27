@@ -26,7 +26,7 @@ const BarCharts = () => {
         <section>
           <BarChart
           horizontal={true}
-            data_1={[100, 200, 300, 400, 500, 600, 658]}
+            data_1={[100, 200,300, 400, 500, 600, 58, 150, 206, 30, 200, 500]}
             data_2={[]}
             title_1="Products"
             title_2="Users"
