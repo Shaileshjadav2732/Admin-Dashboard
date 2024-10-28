@@ -2,7 +2,6 @@
 import AdminSidebar from "../components/AdminSidebar";
 import { ReactElement } from "react";
 import { Column } from "react-table";
-import { FaTrash } from "react-icons/fa";
 import TableHOC from "../components/TableHOC";
 import { useState } from "react"; 
 import { Link } from "react-router-dom";
