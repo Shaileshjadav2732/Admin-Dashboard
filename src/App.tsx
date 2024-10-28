@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { lazy, Suspense } from "react";
 
 import Loader from "./components/Loader";
@@ -25,6 +25,15 @@ const App = () => {
     <Suspense fallback={<Loader />}>
       <Router>
         <Routes>
+          <Route
+            path="/"
+            element={
+              <Link to={"/admin/dashboard"}>
+                <button style={ { margin: "10px",padding: "10px" ,borderRadius: "5px",backgroundColor: "rgba(0, 0, 0, 0.216)", color: "black" } }>Visit Dashboard</button>
+              </Link>
+            }
+          />
+
           <Route path="/admin/dashboard" element={<Dashboard />} />
           <Route path="/admin/customers" element={<Customers />} />
           <Route path="/admin/products" element={<Products />} />
@@ -38,19 +47,17 @@ const App = () => {
             element={<TransactionManagement />}
           />
           {/* charts */}
-          <Route path="/admin/chart/bar" element={<BarCharts/>} />
-          <Route path="/admin/chart/pie" element={<PieCharts/>} />
-           <Route path="/admin/chart/line" element={<LineCharts/>} />
-           {/* apps */}
+          <Route path="/admin/chart/bar" element={<BarCharts />} />
+          <Route path="/admin/chart/pie" element={<PieCharts />} />
+          <Route path="/admin/chart/line" element={<LineCharts />} />
+          {/* apps */}
 
-          <Route path="/admin/app/toss" element={<Toss/>} />
-          <Route path="/admin/app/stopwatch" element={<StopWatch/>} />
-           <Route path="/admin/app/coupon" element={<Coupon/>} />
-
-
+          <Route path="/admin/app/toss" element={<Toss />} />
+          <Route path="/admin/app/stopwatch" element={<StopWatch />} />
+          <Route path="/admin/app/coupon" element={<Coupon />} />
         </Routes>
       </Router>
-    </Suspense> 
+    </Suspense>
   );
 };
 
